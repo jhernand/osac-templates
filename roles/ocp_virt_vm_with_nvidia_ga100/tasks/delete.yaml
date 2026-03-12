@@ -1,0 +1,4 @@
+- name: Delete VM
+  ansible.builtin.import_role:
+    name: osac.templates.ocp_virt_vm
+    tasks_from: "delete"

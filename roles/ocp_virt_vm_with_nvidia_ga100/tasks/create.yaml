@@ -1,0 +1,6 @@
+- name: Create VM with NVIDIA GA100 GPU
+  ansible.builtin.import_role:
+    name: osac.templates.ocp_virt_vm
+    tasks_from: "create"
+  vars:
+    gpu_device_name: "nvidia.com/GA100"

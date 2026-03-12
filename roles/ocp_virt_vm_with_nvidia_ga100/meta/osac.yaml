@@ -1,0 +1,7 @@
+# Define the display name and description of the template
+title: ComputeInstance with NVIDIA GA100 GPU
+description: >
+  ComputeInstance with NVIDIA GA100 (A100) GPU passthrough support.
+
+# Specify this is a ComputeInstance template (not a cluster template)
+template_type: compute_instance

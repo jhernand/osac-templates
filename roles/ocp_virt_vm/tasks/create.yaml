@@ -66,6 +66,18 @@
           dataVolume:
             name: "{{ compute_instance_name }}-root-disk"
 
+- name: Add GPU passthrough device to template spec if required
+  ansible.builtin.set_fact:
+    vm_template_spec: "{{ vm_template_spec | combine(gpu_patch, recursive=True, list_merge='append') }}"
+  vars:
+    gpu_patch:
+      domain:
+        devices:
+          hostDevices:
+            - name: gpu
+              deviceName: "{{ gpu_device_name }}"
+  when: gpu_device_name | length > 0
+
 - name: Copy user-data secret to VM namespace and add cloud-init disk to template spec
   when: vm_user_data_secret_ref | length > 0
   block:
